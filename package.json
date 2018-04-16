@@ -16,6 +16,6 @@
   "scripts": {
     "build": "microbundle -f es",
     "watch": "microbundle watch -f es",
-    "deploy": "gh-pages -d dist"
+    "deploy": "microbundle -f es && firebase deploy"
   }
 }
