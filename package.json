@@ -14,8 +14,8 @@
   "source": "src/",
   "main": "dist/bundle.js",
   "scripts": {
-    "dev": "microenvi",
     "build": "microbundle -f es",
-    "watch": "microbundle watch -f es"
+    "watch": "microbundle watch -f es",
+    "deploy": "gh-pages -d dist"
   }
 }
