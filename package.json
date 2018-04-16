@@ -12,10 +12,10 @@
     "microenvi": "^0.1.0"
   },
   "source": "src/",
-  "main": "build/bundle.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "dev": "microenvi",
-    "build": "microbundle",
-    "watch": "microbundle watch"
+    "build": "microbundle -f es",
+    "watch": "microbundle watch -f es"
   }
 }
