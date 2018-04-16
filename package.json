@@ -1,0 +1,21 @@
+{
+  "name": "facebookFriends",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "facebook-sdk-promise": "^1.2.1",
+    "preact": "^8.2.7"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0",
+    "microbundle": "^0.4.4",
+    "microenvi": "^0.1.0"
+  },
+  "source": "src/",
+  "main": "build/bundle.js",
+  "scripts": {
+    "dev": "microenvi",
+    "build": "microbundle",
+    "watch": "microbundle watch"
+  }
+}
