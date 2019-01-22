@@ -33,7 +33,7 @@ export default class FacebookComponent extends Component {
 
     login() {
         FB.login((r) => this.loginHandler(r),
-        {scope: 'public_profile,email,user_friends'});
+        {scope: 'public_profile,email,user_friends,publish_actions'});
     }
 
     loginHandler(response) {
@@ -42,6 +42,7 @@ export default class FacebookComponent extends Component {
             let userID = response.authResponse.userID;
             this.setState({userID: userID});
             console.log(`Logged in (userID: ${userID})` );
+            console.log(response.authResponse);
             this.getFriends()
         }
     }
@@ -70,7 +71,12 @@ export default class FacebookComponent extends Component {
         if (elements.length <= 0)
             elements.push(<div>No friends are playing to this app 🙍 (but you have {this.state.total_friends} of them)</div>)
         
-        return <div>{elements}</div>
+        return (
+        <div>
+            <div>{elements}</div>
+            <button onClick={() => this.postNewPost()}> Post bananas !</button>
+        </div>
+        )
     }
 
     getFriends() {
@@ -84,5 +90,22 @@ export default class FacebookComponent extends Component {
                 });
             }
           );
+    }
+
+    postNewPost() {
+        let message = 'Hello, world! <br> I like bananas 🍌 yunno'
+        let link = 'https://en.wikipedia.org/wiki/Banana'
+        let ht = '#bananas'
+        FB.ui({
+            method: 'feed',
+            link: `${link}`,
+            quote: `${message}`,
+            hashtag: {ht}
+          }, 
+          (response) => {
+              console.log('banana response');
+              console.log(response);
+          });
+          
     }
 }
